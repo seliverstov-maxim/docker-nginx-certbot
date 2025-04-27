@@ -22,12 +22,18 @@ Setting up Nginx with Certbot (Let's Encrypt) can be a complex task, especially 
 
 ```
 git clone <repository-url>
+cd docker-nginx-certbot
+cp docker-compose.yml.example docker-compose.yml
 ```
 
-Navigate into the project directory: 
+Update domain and email
+```
+DOMAIN: '<your domain>'
+```
 
 ```
-cd <project-directory>
+EMAIL: '<your email>'
+
 ```
 
 Start the Docker containers: 
