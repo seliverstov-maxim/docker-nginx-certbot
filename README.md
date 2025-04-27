@@ -14,7 +14,7 @@ Setting up Nginx with Certbot (Let's Encrypt) can be a complex task, especially 
 ## Features
 
 - **Minimalist Build**: The setup consists of just a few files.
-- **Security Focused**: Maximizes the use of internal mechanisms of Certbot and Nginx for improved security in the configuration.
+- **Security Focused**: Maximizes the use of internal mechanisms of Certbot and Nginx for improved security in the configuration (no hard to undestand sh files which need to be verified).
 
 ## Steps to Get Started
 
