@@ -4,17 +4,17 @@ Setting up Nginx with Certbot (Let's Encrypt) can be a complex task, especially 
 
 ## How It Works
 
-- *Copy and Run*: Simply copy the provided setup to your server and run docker compose up.
-- *First Run Setup*: On the first run:
+- **Copy and Run**: Simply copy the provided setup to your server and run docker compose up.
+- **First Run Setup**: On the first run:
   - Certificates will be requested from Let's Encrypt.
   - The certificates will be passed into the Nginx container.
   - Nginx will start without any hassle.
-- *Automatic Renewal*: A separate container with Certbot will automatically renew SSL certificates and restart Nginx as needed.
+- **Automatic Renewal**: A separate container with Certbot will automatically renew SSL certificates and restart Nginx as needed.
 
 ## Features
 
-- *Minimalist Build*: The setup consists of just a few files.
-- *Security Focused*: Maximizes the use of internal mechanisms of Certbot and Nginx for improved security in the configuration.
+- **Minimalist Build**: The setup consists of just a few files.
+- **Security Focused**: Maximizes the use of internal mechanisms of Certbot and Nginx for improved security in the configuration.
 
 ## Steps to Get Started
 
