@@ -26,20 +26,19 @@ cd docker-nginx-certbot
 cp docker-compose.yml.example docker-compose.yml
 ```
 
-Update domain and email
+Update domain and email in docker-compose.yml
 ```
 DOMAIN: '<your domain>'
 ```
 
 ```
 EMAIL: '<your email>'
-
 ```
 
 Start the Docker containers: 
 
 ```
-docker compose up
+docker compose up -d
 
 ```
 
