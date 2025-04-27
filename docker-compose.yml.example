@@ -1,0 +1,48 @@
+---
+x-common-domain: &common-domain
+  DOMAIN: '<your domain>'
+
+services:
+  certbot-init:
+    image: certbot/certbot
+    entrypoint: /bin/sh
+    command: -c 'test -d /etc/letsencrypt/live/${DOMAIN} || certbot certonly -v --standalone -v -d $DOMAIN -m $EMAIL --force-renewal --agree-tos'
+    environment:
+      <<: *common-domain
+      EMAIL: '<your email>'
+    ports: 
+      - 80:80
+    volumes:
+      - cert_volume:/etc/letsencrypt
+  nginx:
+    image: nginx
+    entrypoint: /bin/sh
+    command: -c 'while :; do sleep 6h && wait $${!}; nginx -s reload; done & /docker-entrypoint.sh nginx -g "daemon off;error_log /dev/stdout debug;"'
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      <<: *common-domain
+    volumes:
+      - ./nginx:/etc/nginx/templates # to configure nginx
+      - ./nginx/static:/var/www/html # provide static web site
+      - cert_volume:/etc/letsencrypt
+      - acme_challenge:/usr/share/nginx/html/.well-known
+    depends_on:
+      certbot-init:
+        condition: service_completed_successfully
+        required: true
+  certbot:
+    image: certbot/certbot
+    entrypoint: /bin/sh
+    command: -c 'trap exit TERM; while :; do certbot renew; sleep 24h && wait $${!}; done;'
+    depends_on:
+      nginx:
+        condition: service_started
+        required: true
+    volumes:
+      - cert_volume:/etc/letsencrypt
+      - acme_challenge:/usr/share/nginx/html/.well-known
+volumes:
+  cert_volume:
+  acme_challenge:

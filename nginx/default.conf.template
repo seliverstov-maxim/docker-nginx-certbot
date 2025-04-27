@@ -1,0 +1,22 @@
+access_log /dev/stdout;
+error_log /dev/stdout;
+
+server {
+  listen 80 default_server;
+  server_name _;
+  return 301 https://$host$request_uri;
+}
+
+server {
+  listen 443 ssl;
+  server_name ${DOMAIN};
+
+  ssl_certificate     /etc/letsencrypt/live/${DOMAIN}/cert.pem;
+  ssl_certificate_key /etc/letsencrypt/live/${DOMAIN}/privkey.pem;
+
+  location / {
+    root /var/www/html;
+    index index.html index.htm;
+    try_files $uri $uri/ =404;
+  }
+}
