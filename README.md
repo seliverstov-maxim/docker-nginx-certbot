@@ -21,7 +21,7 @@ Setting up Nginx with Certbot (Let's Encrypt) can be a complex task, especially 
 - Clone this repository to your server: 
 
 ```
-git clone <repository-url>
+git clone git@github.com:seliverstov-maxim/docker-nginx-certbot.git
 cd docker-nginx-certbot
 cp docker-compose.yml.example docker-compose.yml
 ```
