@@ -34,7 +34,6 @@ EMAIL='test@example.com'
   - Load domain and email from .env variables.
   - Run Docker Compose.
 ```
-source .env
 docker compose up -d
 ```
 That's it! Your Nginx server with automatic SSL certificate management should now be up and running.
