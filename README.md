@@ -18,7 +18,7 @@ Setting up Nginx with Certbot (Let's Encrypt) can be a complex task, especially 
 
 ## Steps to Get Started
 
-- Clone this repository to your server: 
+Clone this repository to your server: 
 
 ```
 git clone https://github.com/seliverstov-maxim/docker-nginx-certbot.git
