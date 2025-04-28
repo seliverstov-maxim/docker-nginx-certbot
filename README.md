@@ -26,7 +26,7 @@ cd docker-nginx-certbot
 cp .env.example .env
 ```
 
-Update domain and email in docker-compose.yml
+Update domain and email in `.env` file
 ```
 DOMAIN='example.com'
 ```
