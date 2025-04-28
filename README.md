@@ -24,21 +24,17 @@ git clone https://github.com/seliverstov-maxim/docker-nginx-certbot.git
 cd docker-nginx-certbot
 cp .env.example .env
 ```
-
-Update DOMAIN and EMAIL in .env file:
+- Update DOMAIN and EMAIL in .env file:
 
 ```
 DOMAIN='example.com'
 EMAIL='test@example.com'
 ```
-
-Start the Docker containers:
-- Load domain and email from .env variables.
-- Run Docker Compose.
-
+- Start the Docker containers:
+  - Load domain and email from .env variables.
+  - Run Docker Compose.
 ```
 source .env
 docker compose up -d
 ```
-
 That's it! Your Nginx server with automatic SSL certificate management should now be up and running.
