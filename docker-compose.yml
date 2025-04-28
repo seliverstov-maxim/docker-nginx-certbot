@@ -1,15 +1,9 @@
 ---
-x-common-domain: &common-domain
-  DOMAIN: '<your domain>'
-
 services:
   certbot-init:
     image: certbot/certbot
     entrypoint: /bin/sh
     command: -c 'test -d /etc/letsencrypt/live/${DOMAIN} || certbot certonly -v --standalone -v -d $DOMAIN -m $EMAIL --force-renewal --agree-tos'
-    environment:
-      <<: *common-domain
-      EMAIL: '<your email>'
     ports: 
       - 80:80
     volumes:
@@ -21,13 +15,13 @@ services:
     ports:
       - 80:80
       - 443:443
-    environment:
-      <<: *common-domain
     volumes:
       - ./nginx:/etc/nginx/templates # to configure nginx
       - ./nginx/static:/var/www/html # provide static web site
       - cert_volume:/etc/letsencrypt
       - acme_challenge:/usr/share/nginx/html/.well-known
+    environment:
+      DOMAIN: ${DOMAIN}
     depends_on:
       certbot-init:
         condition: service_completed_successfully
