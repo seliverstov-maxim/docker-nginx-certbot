@@ -9,7 +9,7 @@ Setting up Nginx with Certbot (Let's Encrypt) can be a complex task, especially 
   - Certificates will be requested from Let's Encrypt.
   - The certificates will be passed into the Nginx container.
   - Nginx will start without any hassle.
-- Automatic Renewal: A separate container with Certbot will automatically renew SSL certificates and restart Nginx as needed.
+- **Automatic Renewal**: A separate container with Certbot will automatically renew SSL certificates and restart Nginx as needed.
 
 ## Features
 
